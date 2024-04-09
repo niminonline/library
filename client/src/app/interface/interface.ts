@@ -18,3 +18,7 @@ export interface BookListResponse {
   totalPages: number;
   data: Book[];
 }
+export interface SingleBookResponse{
+  status: string;
+  data:Book
+}

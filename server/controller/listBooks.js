@@ -2,7 +2,7 @@ import Book from "../models/bookModel.js";
 
 export const listBooks = async (req, res) => {
     try {
-      let { page = 1, limit = 10, search = "" } = req.query;
+      let { page = 1, limit = 3, search = "" } = req.query;
   
       const query = {};
       if (search) {

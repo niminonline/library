@@ -27,7 +27,7 @@ export class AddBookComponent {
           Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'User registered successfully',
+            title: 'Book added successfully',
             showConfirmButton: false,
             timer: 1500,
           });

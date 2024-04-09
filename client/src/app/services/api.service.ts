@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { BookListResponse } from '../interface/interface';
+import { BookListResponse, SingleBookResponse } from '../interface/interface';
 import { APIResponse } from '../interface/interface';
 
 @Injectable({
@@ -20,7 +20,7 @@ export class ApiService {
       .set('page', page.toString())
       .set('limit', limit.toString())
       .set('search', search);
-    return this.http.get<BookListResponse>(this.baseUrl+"/books", { params });
+    return this.http.get<BookListResponse>(this.baseUrl + '/books', { params });
   }
 
   addBook(
@@ -30,11 +30,26 @@ export class ApiService {
     price: number
   ): Observable<APIResponse> {
     const bookData = { name, description, publishDate, price };
-    return this.http.post<APIResponse>(this.baseUrl+"/add-book", bookData);
+    return this.http.post<APIResponse>(this.baseUrl + '/add-book', bookData);
   }
 
   deleteBook(id: string | null): Observable<APIResponse> {
-    const url = `${this.baseUrl}/delete-book/${id}`; 
+    const url = `${this.baseUrl}/delete-book/${id}`;
     return this.http.delete<APIResponse>(url);
+  }
+  editBook(
+    _id: string,
+    name: string,
+    description: string,
+    publishDate: Date,
+    price: number
+  ): Observable<APIResponse> {
+    const bookData = { _id, name, description, publishDate, price };
+    return this.http.put<APIResponse>(this.baseUrl + '/edit-book', bookData);
+  }
+
+  loadBook(id: string | null): Observable<SingleBookResponse> {
+    const url = `${this.baseUrl}/book/${id}`;
+    return this.http.get<SingleBookResponse>(url);
   }
 }

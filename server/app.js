@@ -6,6 +6,7 @@ import { addBook } from "./controller/addBook.js";
 import { deleteBook } from "./controller/deleteBook.js";
 import { editBook } from "./controller/editBook.js";
 import { listBooks } from "./controller/listBooks.js";
+import { listBook } from "./controller/listBook.js";
 
 const app = express();
 dotenv.config();
@@ -33,9 +34,10 @@ app.use(express.json());
 //     res.send("Test")
 // })
 app.get("/books", listBooks);
+app.get("/book/:id", listBook);
 app.post("/add-book", addBook);
-app.put("/edit-book/:id", editBook);
-app.delete("/delete-book/:id", deleteBook);
+app.put("/edit-book", editBook);
+app.delete("/delete-book/:id", deleteBook); 
 
 app.listen(port, () => {
   console.log(`Server started on port ${port}. URL: http://localhost:${port}/`);

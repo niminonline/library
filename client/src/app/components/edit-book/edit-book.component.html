@@ -1,0 +1,18 @@
+<nav class="button-block">
+    <a class="button" routerLink="/">List Books</a>
+  </nav>
+  
+  <form
+    (submit)="
+      editBook(book._id,name.value, description.value, publishDate.value, price.value)
+    "
+  >
+  <h1 class="text-center">Edit Book</h1>
+    <input type="text" value={{book._id}} hidden>
+    <input type="text" #name placeholder="Name" required value={{book.name}}/><br />
+    <textarea #description placeholder="Description" required value={{book.description}}></textarea><br />
+    <input type="date" #publishDate required value={{book.publishDate}}/><br />
+    <input type="number" #price placeholder="Price" required value={{book.price}}/><br />
+    <button type="submit">Update Book</button>
+  </form>
+  

@@ -2,10 +2,10 @@ import Book from "../models/bookModel.js";
 
 export const editBook = async (req, res) => {
     try {
-        const { id } = req.params;
-        const { name, description, publishDate, price } = req.body;
+        
+        const { _id,name, description, publishDate, price } = req.body;
         const updatedBook = await Book.findByIdAndUpdate(
-          id,
+          _id,
           { name, description, publishDate, price },
           { new: true }
         );
