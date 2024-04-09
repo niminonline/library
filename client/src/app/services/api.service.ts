@@ -20,7 +20,7 @@ export class ApiService {
       .set('page', page.toString())
       .set('limit', limit.toString())
       .set('search', search);
-    return this.http.get<BookListResponse>(this.baseUrl, { params });
+    return this.http.get<BookListResponse>(this.baseUrl+"/books", { params });
   }
 
   addBook(
@@ -30,6 +30,11 @@ export class ApiService {
     price: number
   ): Observable<APIResponse> {
     const bookData = { name, description, publishDate, price };
-    return this.http.post<APIResponse>(this.baseUrl, bookData);
+    return this.http.post<APIResponse>(this.baseUrl+"/add-book", bookData);
+  }
+
+  deleteBook(id: string | null): Observable<APIResponse> {
+    const url = `${this.baseUrl}/delete-book/${id}`; 
+    return this.http.delete<APIResponse>(url);
   }
 }

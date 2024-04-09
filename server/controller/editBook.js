@@ -12,8 +12,9 @@ export const editBook = async (req, res) => {
         if (!updatedBook) {
           return res.status(404).json({ message: "Book not found" });
         }
-        res.status(200).res.json({status:"OK", message: "Book updated successfully"});
+        res.status(200).json({status:"OK", message: "Book updated successfully"});
       } catch (error) {
+        console.log(error);
         res.status(500).json({ error: "Internal server error" });
       }
     }

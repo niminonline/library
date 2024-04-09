@@ -34,8 +34,8 @@ app.use(express.json());
 // })
 app.get("/books", listBooks);
 app.post("/add-book", addBook);
-app.put("/books/:id", editBook);
-app.delete("/books/:id", deleteBook);
+app.put("/edit-book/:id", editBook);
+app.delete("/delete-book/:id", deleteBook);
 
 app.listen(port, () => {
   console.log(`Server started on port ${port}. URL: http://localhost:${port}/`);

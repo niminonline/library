@@ -1,4 +1,24 @@
-<p>list-books works!</p>
+<nav class="button-block">
+  <a class="button" routerLink="/add-book">Add Book</a>
+</nav>
 
 
-
+<div class="container">
+  <div class="display-cards">
+    <ng-container *ngFor="let book of books">
+      <div class="col-md-4">
+        <mat-card class="book-card">
+          <img mat-card-image src="https://images.all-free-download.com/images/graphicthumb/book_vector_266332.jpg" alt="Book Image">
+          <div class="card-body">
+            <h2>{{ book.name }}</h2>
+            <p>{{ book.description }}</p>
+            <p>Publish Date: {{ book.publishDate | date }}</p>
+            <p>Price: {{ book.price }}</p>
+            <button mat-raised-button color="primary" (click)="editBook(book._id)">Edit</button>
+            <button mat-raised-button color="warn" (click)="deleteBook(book._id)">Delete</button>
+          </div>
+        </mat-card>
+      </div>
+    </ng-container>
+  </div>
+</div>
